@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CYBERTEC8 // INCIDENT DASHBOARD</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: #030706;
+            color: #d8ffe7;
+            font-family: "JetBrains Mono", monospace;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background:
+                linear-gradient(rgba(0,255,120,.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,255,120,.025) 1px, transparent 1px);
+            background-size: 45px 45px;
+        }
+
+        .topbar {
+            height: 64px;
+            border-bottom: 1px solid #164c2c;
+            background: rgba(3,10,7,.96);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo {
+            color: #24ff78;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-shadow: 0 0 12px rgba(36,255,120,.35);
+        }
+
+        .system {
+            color: #507b61;
+            font-size: 11px;
+        }
+
+        .online {
+            color: #25e878;
+        }
+
+        .container {
+            width: min(1150px, 92%);
+            margin: 45px auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            margin-bottom: 28px;
+        }
+
+        h1 {
+            margin: 0;
+            color: #e4ffed;
+            font-size: 26px;
+        }
+
+        .sub {
+            color: #527660;
+            font-size: 11px;
+            margin-top: 8px;
+        }
+
+        .badge {
+            border: 1px solid #7c2631;
+            color: #ff6876;
+            padding: 8px 12px;
+            font-size: 10px;
+            background: rgba(255,60,80,.04);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .card {
+            background: rgba(5,14,9,.88);
+            border: 1px solid #164c2c;
+            padding: 22px;
+            min-height: 150px;
+            transition: .3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 2px;
+            width: 0;
+            background: #24ff78;
+            transition: .3s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: #258e51;
+            box-shadow: 0 10px 35px rgba(0,255,100,.07);
+        }
+
+        .card:hover::after {
+            width: 100%;
+        }
+
+        .label {
+            color: #527660;
+            font-size: 10px;
+            margin-bottom: 12px;
+        }
+
+        .value {
+            color: #25e878;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .incident {
+            grid-column: span 2;
+        }
+
+        .incident-id {
+            color: #b8ffd0;
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+
+        .terminal-output {
+            background: #020504;
+            border: 1px solid #10351f;
+            padding: 18px;
+            color: #72b88d;
+            font-size: 11px;
+            line-height: 1.9;
+        }
+
+        .terminal-output span {
+            color: #25e878;
+        }
+
+        .footer {
+            margin-top: 35px;
+            color: #31523d;
+            font-size: 9px;
+            text-align: center;
+        }
+
+        @media (max-width: 800px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .incident {
+                grid-column: span 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="topbar">
+    <div class="logo">CYBERTEC8</div>
+
+    <div class="system">
+        SYSTEM STATUS:
+        <span class="online">● ONLINE</span>
+    </div>
+</header>
+
+<main class="container">
+
+    <div class="heading">
+        <div>
+            <h1>INCIDENT RESPONSE DASHBOARD</h1>
+            <div class="sub">
+                // INTERNAL SECURITY OPERATIONS CENTER
+            </div>
+        </div>
+
+        <div class="badge">
+            RESTRICTED ACCESS
+        </div>
+    </div>
+
+    <section class="grid">
+
+        <div class="card">
+            <div class="label">INCIDENT STATUS</div>
+            <div class="value">ACTIVE</div>
+        </div>
+
+        <div class="card">
+            <div class="label">SECURITY LEVEL</div>
+            <div class="value">HIGH</div>
+        </div>
+
+        <div class="card">
+            <div class="label">SYSTEM</div>
+            <div class="value">CT8-IR</div>
+        </div>
+
+        <div class="card incident">
+
+            <div class="label">CURRENT INCIDENT</div>
+
+            <div class="incident-id">
+                CT8-INC-2026-11
+            </div>
+
+            <div class="terminal-output">
+                <span>root@ct8</span>:~$ incident_status<br>
+                <br>
+                STATUS&nbsp;&nbsp;&nbsp;&nbsp;: INTERNAL SECURITY REVIEW<br>
+                CLASS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: CONFIDENTIAL<br>
+                ACCESS&nbsp;&nbsp;&nbsp;&nbsp;: RESTRICTED<br>
+                CHANNEL&nbsp;&nbsp;&nbsp;: SECURE<br>
+                <br>
+                <span>[SYSTEM]</span> Monitoring active...
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <div class="label">NETWORK</div>
+
+            <div class="value">
+                SECURE
+            </div>
+
+            <div style="margin-top:15px;color:#507b61;font-size:10px;">
+                encrypted channel<br>
+                endpoint protected
+            </div>
+
+        </div>
+
+    </section>
+
+    <div class="footer">
+        CYBERTEC8 SECURITY OPERATIONS // CT8-IR
+    </div>
+
+</main>
+
+</body>
+</html>

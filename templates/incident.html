@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CYBERTEC8 // INCIDENT ACCESS</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background:
+                radial-gradient(circle at 50% 20%, rgba(0,255,120,.08), transparent 35%),
+                #030706;
+            color: #d8ffe7;
+            font-family: "JetBrains Mono", monospace;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background:
+                linear-gradient(rgba(0,255,120,.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,255,120,.025) 1px, transparent 1px);
+            background-size: 45px 45px;
+            animation: gridMove 12s linear infinite;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background: repeating-linear-gradient(
+                to bottom,
+                transparent 0px,
+                transparent 3px,
+                rgba(0,255,120,.025) 4px
+            );
+        }
+
+        @keyframes gridMove {
+            from { transform: translateY(0); }
+            to { transform: translateY(45px); }
+        }
+
+        .terminal {
+            width: min(470px, 92%);
+            border: 1px solid #164c2c;
+            background: rgba(3,10,7,.94);
+            box-shadow:
+                0 0 35px rgba(0,255,100,.08),
+                inset 0 0 30px rgba(0,255,100,.025);
+            position: relative;
+            z-index: 2;
+            animation: appear .7s ease;
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .terminal-bar {
+            height: 42px;
+            border-bottom: 1px solid #164c2c;
+            display: flex;
+            align-items: center;
+            padding: 0 15px;
+            gap: 8px;
+            background: #07110b;
+        }
+
+        .dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+        }
+
+        .red { background: #ff4655; }
+        .yellow { background: #ffc247; }
+        .green { background: #25e878; }
+
+        .terminal-title {
+            margin-left: 8px;
+            color: #65d99a;
+            font-size: 12px;
+        }
+
+        .content {
+            padding: 38px;
+        }
+
+        .brand {
+            color: #24ff78;
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-shadow: 0 0 14px rgba(36,255,120,.35);
+        }
+
+        .subtitle {
+            color: #628b72;
+            font-size: 11px;
+            margin-top: 7px;
+        }
+
+        .status {
+            margin: 28px 0;
+            padding: 13px;
+            border-left: 3px solid #ff4655;
+            background: rgba(255,70,85,.04);
+            color: #ff7180;
+            font-size: 11px;
+        }
+
+        .prompt {
+            color: #25e878;
+            margin-bottom: 8px;
+            font-size: 12px;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 15px;
+            background: #020504;
+            border: 1px solid #174b2c;
+            outline: none;
+            color: #baffcf;
+            font-family: inherit;
+            font-size: 13px;
+            transition: .25s;
+        }
+
+        input:focus {
+            border-color: #24ff78;
+            box-shadow: 0 0 16px rgba(36,255,120,.12);
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #25e878;
+            background: rgba(37,232,120,.05);
+            color: #25e878;
+            font-family: inherit;
+            font-weight: 700;
+            cursor: pointer;
+            letter-spacing: 1px;
+            transition: .25s;
+        }
+
+        button:hover {
+            background: #25e878;
+            color: #020504;
+            box-shadow: 0 0 25px rgba(37,232,120,.25);
+        }
+
+        .footer {
+            margin-top: 25px;
+            color: #385d47;
+            font-size: 9px;
+            text-align: center;
+        }
+
+        .blink {
+            animation: blink 1s steps(2) infinite;
+        }
+
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="terminal">
+
+    <div class="terminal-bar">
+        <span class="dot red"></span>
+        <span class="dot yellow"></span>
+        <span class="dot green"></span>
+        <span class="terminal-title">incident-access.secure</span>
+    </div>
+
+    <div class="content">
+
+        <div class="brand">CYBERTEC8</div>
+
+        <div class="subtitle">
+            // INTERNAL INCIDENT RESPONSE SYSTEM
+        </div>
+
+        <div class="status">
+            [!] RESTRICTED SYSTEM<br>
+            Authorization required to continue.
+        </div>
+
+        <!-- Keep your existing form action/method here -->
+        <form method="POST">
+
+            <div class="prompt">
+                root@ct8:~$ identify_user
+            </div>
+
+            <input
+                type="text"
+                name="username"
+                placeholder="username"
+                autocomplete="off"
+                required
+            >
+
+            <div class="prompt">
+                root@ct8:~$ authenticate
+            </div>
+
+            <input
+                type="password"
+                name="password"
+                placeholder="password"
+                required
+            >
+
+            <button type="submit">
+                [ ACCESS INCIDENT SYSTEM ]
+            </button>
+
+        </form>
+
+        <div class="footer">
+            CT8-IR // SECURE ACCESS TERMINAL
+            <span class="blink">_</span>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
